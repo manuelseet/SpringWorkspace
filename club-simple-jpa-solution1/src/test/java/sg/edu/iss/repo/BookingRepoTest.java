@@ -1,9 +1,7 @@
 package sg.edu.iss.repo;
 
-import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.MethodOrderer.OrderAnnotation; //note this is for the TestMethodOrder (don't use ClassOrderer.OrderAnnotations)
 import org.junit.jupiter.api.Order;
@@ -15,26 +13,23 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import sg.edu.iss.ClubSimpleJpaSolution1Application;
+import sg.edu.iss.domain.Booking;
+import sg.edu.iss.domain.Facility;
 import sg.edu.iss.domain.Member;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(classes = ClubSimpleJpaSolution1Application.class)
 @TestMethodOrder(OrderAnnotation.class)
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE) 
-public class MemberRepoTest {
+public class BookingRepoTest {
 
-	@Autowired
+	@Autowired 
+	BookingRepository brepo;
+	FacilityRepository frepo;
 	MemberRepository mrepo;
 	
-	@Test
-	@Order(1)
-	public void testFindById()
-	{
-		mrepo.deleteAll();
-		Member m1 = new Member(111, "Jessica", "Faul", "Gerards", "JFGRocks", "jessie");
-		
-	}
-	
-	
+
 }
