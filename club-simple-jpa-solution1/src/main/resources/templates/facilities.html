@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="headerfiles">
+<title>Facility Listings of Standard Club </title>
+<meta charset="UTF-8" />
+<link th:href="@{/css/styles.css}" rel="stylesheet">
+</head>
+
+
+<body>
+	<header th:insert = "fragment/shared_layout.html :: header"> </header>
+	<div th:replace = "fragment/shared_layout.html :: menu"> </div>
+	
+	<h1> Facility Listings </h1>
+	
+	<a href="DummyHolder to Add Facility Button" th:href = "@{/facility/add}"> Add Facility Here! </a>	<!--Note, always redirect button to the controller, which later goes to the correct view -->
+	
+	<h2 th:if="${not #lists.isEmpty(flist)}">Facility List</h2>
+	<table th:if="${not #lists.isEmpty(flist)}">
+		<tr>
+			<th> Facility Id </th>
+			<th> Facility Name </th> 
+			<th> Facility Description </th>
+		</tr>
+		
+		<tr th:each="f1 : ${flist}"> 
+			<td th:text = "${f1.facilityId}"> F1 id</td >
+			<td th:text = "${f1.name}"> F1 name</td >
+			<td th:text = "${f1.description}"> f1 desc</td >
+			
+			<td> <a href = "DummyHolder for Edit Facility" th:href="@{/facility/edit/}+${f1.facilityId}"> Edit Facility </a >   </td>
+			<td><a href="DeleteFacility.html"
+				th:href="@{/facility/delete/}+${f1.facilityId}">Delete</a></td>
+		</tr>
+	</table>
+	
+	
+	
+	<div th:replace = "fragment/shared_layout.html :: footer"></div>
+	 
+
+
+
+</body>

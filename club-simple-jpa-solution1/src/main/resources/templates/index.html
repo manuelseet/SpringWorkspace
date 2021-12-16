@@ -1,14 +1,28 @@
-<!DOCTYPE html>
-
-<html xmlns:th = "http://www.thymeleaf.org">
-
-<head>
-Spring MVC Title
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="headerfiles">
+<meta charset="UTF-8" />
+<link th:href="@{/css/styles.css}" rel="stylesheet">
 </head>
 
+
 <body>
-<h1> Controller Demos </h1>
+	<header th:insert = "fragment/shared_layout.html :: header"> </header>
+	<div th:replace = "fragment/shared_layout.html :: menu"> </div>
+	
+	<div align="center"> 
+		 <h3> Welcome to the Standard Club's Facility Booking System </h3>
+		 <img alt = "facilitybooking.png" th:src="@{/image/image.png}" />
+	</div >
+	
+	<div th:replace = "fragment/shared_layout.html :: footer"></div>
+	 
+
+
+
 </body>
+
+
 
 
 </html>

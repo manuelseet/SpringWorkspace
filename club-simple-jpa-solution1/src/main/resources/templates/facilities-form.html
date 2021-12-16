@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="headerfiles">
+<title>Add Facility </title>
+<meta charset="UTF-8" />
+<link th:href="@{/css/styles.css}" rel="stylesheet">
+</head>
+
+
+<body>
+	<header th:insert = "fragment/shared_layout.html :: header"> </header>
+	<div th:replace = "fragment/shared_layout.html :: menu"> </div>
+	
+	<h1> Form to Add Facility </h1>
+		
+	<form action="#" th:object="${facility}" th:action="@{/facility/save}" method = "post">
+		<fieldset> 
+			<input type="hidden" th:field="*{facilityId}"> 
+		</fieldset>
+		
+		<fieldset> Facility Name 
+			<input type = "text" th:field = "*{name}">
+			<p th:if="${#fields.hasErrors('name')}" th:errors = "*{name}"></p> 
+			<!-- if there errors in this field we called name, then bind errors in BindingResult attribute for facility.name -->
+		</fieldset>
+		
+		<fieldset> Facility Description
+			<input type = "text" th:field = "*{description}">
+			<p th:if="${#fields.hasErrors('description')}" th:errors = "*{description}"}></p>
+		</fieldset>
+		
+		<fieldset>
+			<input type ="submit" value ="Save Form">
+			&nbsp; &nbsp;
+			<input type = "reset" value ="Reset Form">			
+		</fieldset> 
+
+	</form> 
+
+	<br/>
+	<div th:replace = "fragment/shared_layout.html :: footer"></div>
+</body>
+</html>
+

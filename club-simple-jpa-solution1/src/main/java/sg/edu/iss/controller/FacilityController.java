@@ -1,5 +1,7 @@
 package sg.edu.iss.controller;
 
+import java.util.ArrayList;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +27,8 @@ public class FacilityController {
 	@GetMapping("/list")
 	public String list(Model model)
 	{
-		model.addAttribute("flist", frepo.findAll());
+		ArrayList<Facility> flist = (ArrayList<Facility>) frepo.findAll();
+		model.addAttribute("flist", flist);
 		return "facilities";
 	}
 	
@@ -37,9 +40,9 @@ public class FacilityController {
 		return "facilities-form";
 	}
 	
-	@PostMapping("/save")
-	public String saveFacility(@ModelAttribute ("facility") @Valid Facility f1, BindingResult bindingResult)
-	{
+	@RequestMapping(value = "/save")
+	public String saveFacility(@ModelAttribute("facility") @Valid Facility f1, 
+			BindingResult bindingResult,  Model model) {
 		if (bindingResult.hasErrors()) {
 			return "facility-form";
 		}
@@ -47,14 +50,11 @@ public class FacilityController {
 		return "forward:/facility/list";
 	}
 	
-	@PostMapping("/delete/{id}")
-	public String deleteFacility(@PathVariable("id") Integer id, BindingResult bindingResult)
+	
+	@RequestMapping("/delete/{id}")
+	public String deleteFacility(@PathVariable("id") Integer id)
 	{
-		if (bindingResult.hasErrors())
-			return "facility-form";
-		
-		Facility f0 = frepo.findById(id).get();
-		frepo.delete(f0);
+		frepo.delete(frepo.findById(id).get());
 		return "forward:/facility/list";
 	}
 	

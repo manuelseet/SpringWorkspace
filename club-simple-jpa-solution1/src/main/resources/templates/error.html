@@ -1,0 +1,22 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="headerfiles">
+<meta charset="UTF-8" />
+<link th:href="@{/css/styles.css}" rel="stylesheet">
+</head>
+
+
+<body>
+	<header th:insert = "fragment/shared_layout.html :: header"> </header>
+	<div th:replace = "fragment/shared_layout.html :: menu"> </div>
+	
+	<div> You have reached an error page! Please navigate to page you want! </div>
+	
+	<div th:replace = "fragment/shared_layout.html :: footer"></div>
+
+</body>
+
+
+
+
+</html>

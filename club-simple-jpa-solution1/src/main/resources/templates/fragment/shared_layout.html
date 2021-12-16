@@ -1,12 +1,11 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"> <!-- dependency injection-->
+
+
 <head th:fragment="headerfiles">
 <meta charset="UTF-8" />
 <link th:href="@{/css/styles.css}" rel="stylesheet">
 </head>
-
-
-
 <body>
 	<div th:fragment="header" id="header">
 		<table>
@@ -16,9 +15,7 @@
 			</tr>
 		</table>
 
-
 	</div>
-	
 	<div th:fragment="menu" id="menu">
 		<table>
 			<tr>
@@ -32,7 +29,6 @@
 			</tr>
 		</table>
 	</div>
-	
 	<footer th:fragment="footer">
 		<a href="Home" th:href="@{/}">Back to Home</a>
 		<br/>
@@ -40,11 +36,5 @@
 			th:text="${execInfo.now.time}"></b></small> <br /> <small>(c)Facility
 			Booking System , ISS, NUS 2021</small>
 	</footer>
-	
-	
 </body>
-
-
-
-
 </html>
